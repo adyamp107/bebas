@@ -2,7 +2,7 @@
 //  BebasApp.swift
 //  Bebas
 //
-//  Created by Ashraf Alif Adillah on 09/06/25.
+//  Created by Adya Muhammad Prawira on 09/06/25.
 //
 
 import SwiftUI
