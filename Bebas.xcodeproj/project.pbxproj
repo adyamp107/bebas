@@ -6,20 +6,76 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		6D46C2BA2DF735C200558182 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D46C2A12DF735C100558182 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D46C2A82DF735C100558182;
+			remoteInfo = Bebas;
+		};
+		6D46C2C42DF735C200558182 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D46C2A12DF735C100558182 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D46C2A82DF735C100558182;
+			remoteInfo = Bebas;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		4A22B7012DF6A32500500E79 /* Bebas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Bebas.app; path = "/Users/achrip/projects/Academy/MLChallenge/signlearn/main/build/Debug-iphoneos/Bebas.app"; sourceTree = "<absolute>"; };
+		6D46C2A92DF735C100558182 /* Bebas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bebas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D46C2B92DF735C200558182 /* BebasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BebasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D46C2C32DF735C200558182 /* BebasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BebasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6D2520182DF81797007AD64E /* Exceptions for "Bebas" folder in "Bebas" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6D46C2A82DF735C100558182 /* Bebas */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4A22B7032DF6A32500500E79 /* Bebas */ = {
+		6D46C2AB2DF735C100558182 /* Bebas */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6D2520182DF81797007AD64E /* Exceptions for "Bebas" folder in "Bebas" target */,
+			);
 			path = Bebas;
+			sourceTree = "<group>";
+		};
+		6D46C2BC2DF735C200558182 /* BebasTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BebasTests;
+			sourceTree = "<group>";
+		};
+		6D46C2C62DF735C200558182 /* BebasUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BebasUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4A22B6FE2DF6A32500500E79 /* Frameworks */ = {
+		6D46C2A62DF735C100558182 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D46C2B62DF735C200558182 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D46C2C02DF735C200558182 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,77 +85,157 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4A22B6F82DF6A32500500E79 = {
+		6D46C2A02DF735C100558182 = {
 			isa = PBXGroup;
 			children = (
-				4A22B7032DF6A32500500E79 /* Bebas */,
+				6D46C2AB2DF735C100558182 /* Bebas */,
+				6D46C2BC2DF735C200558182 /* BebasTests */,
+				6D46C2C62DF735C200558182 /* BebasUITests */,
+				6D46C2AA2DF735C100558182 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		6D46C2AA2DF735C100558182 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D46C2A92DF735C100558182 /* Bebas.app */,
+				6D46C2B92DF735C200558182 /* BebasTests.xctest */,
+				6D46C2C32DF735C200558182 /* BebasUITests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4A22B7002DF6A32500500E79 /* Bebas */ = {
+		6D46C2A82DF735C100558182 /* Bebas */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4A22B70C2DF6A32600500E79 /* Build configuration list for PBXNativeTarget "Bebas" */;
+			buildConfigurationList = 6D46C2CD2DF735C200558182 /* Build configuration list for PBXNativeTarget "Bebas" */;
 			buildPhases = (
-				4A22B6FD2DF6A32500500E79 /* Sources */,
-				4A22B6FE2DF6A32500500E79 /* Frameworks */,
-				4A22B6FF2DF6A32500500E79 /* Resources */,
+				6D46C2A52DF735C100558182 /* Sources */,
+				6D46C2A62DF735C100558182 /* Frameworks */,
+				6D46C2A72DF735C100558182 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				4A22B7032DF6A32500500E79 /* Bebas */,
+				6D46C2AB2DF735C100558182 /* Bebas */,
 			);
 			name = Bebas;
 			packageProductDependencies = (
 			);
 			productName = Bebas;
-			productReference = 4A22B7012DF6A32500500E79 /* Bebas.app */;
+			productReference = 6D46C2A92DF735C100558182 /* Bebas.app */;
 			productType = "com.apple.product-type.application";
+		};
+		6D46C2B82DF735C200558182 /* BebasTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D46C2D02DF735C200558182 /* Build configuration list for PBXNativeTarget "BebasTests" */;
+			buildPhases = (
+				6D46C2B52DF735C200558182 /* Sources */,
+				6D46C2B62DF735C200558182 /* Frameworks */,
+				6D46C2B72DF735C200558182 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D46C2BB2DF735C200558182 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6D46C2BC2DF735C200558182 /* BebasTests */,
+			);
+			name = BebasTests;
+			packageProductDependencies = (
+			);
+			productName = BebasTests;
+			productReference = 6D46C2B92DF735C200558182 /* BebasTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6D46C2C22DF735C200558182 /* BebasUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D46C2D32DF735C200558182 /* Build configuration list for PBXNativeTarget "BebasUITests" */;
+			buildPhases = (
+				6D46C2BF2DF735C200558182 /* Sources */,
+				6D46C2C02DF735C200558182 /* Frameworks */,
+				6D46C2C12DF735C200558182 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D46C2C52DF735C200558182 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6D46C2C62DF735C200558182 /* BebasUITests */,
+			);
+			name = BebasUITests;
+			packageProductDependencies = (
+			);
+			productName = BebasUITests;
+			productReference = 6D46C2C32DF735C200558182 /* BebasUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4A22B6F92DF6A32500500E79 /* Project object */ = {
+		6D46C2A12DF735C100558182 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
-				LastUpgradeCheck = 1630;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					4A22B7002DF6A32500500E79 = {
-						CreatedOnToolsVersion = 16.3;
+					6D46C2A82DF735C100558182 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					6D46C2B82DF735C200558182 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6D46C2A82DF735C100558182;
+					};
+					6D46C2C22DF735C200558182 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6D46C2A82DF735C100558182;
 					};
 				};
 			};
-			buildConfigurationList = 4A22B6FC2DF6A32500500E79 /* Build configuration list for PBXProject "Bebas" */;
+			buildConfigurationList = 6D46C2A42DF735C100558182 /* Build configuration list for PBXProject "Bebas" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 4A22B6F82DF6A32500500E79;
+			mainGroup = 6D46C2A02DF735C100558182;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				4A821D782DF7F0E200353E2D /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
-			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 4A22B6F82DF6A32500500E79;
+			productRefGroup = 6D46C2AA2DF735C100558182 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4A22B7002DF6A32500500E79 /* Bebas */,
+				6D46C2A82DF735C100558182 /* Bebas */,
+				6D46C2B82DF735C200558182 /* BebasTests */,
+				6D46C2C22DF735C200558182 /* BebasUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4A22B6FF2DF6A32500500E79 /* Resources */ = {
+		6D46C2A72DF735C100558182 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D46C2B72DF735C200558182 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D46C2C12DF735C200558182 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -109,7 +245,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4A22B6FD2DF6A32500500E79 /* Sources */ = {
+		6D46C2A52DF735C100558182 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D46C2B52DF735C200558182 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D46C2BF2DF735C200558182 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -118,8 +268,21 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6D46C2BB2DF735C200558182 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D46C2A82DF735C100558182 /* Bebas */;
+			targetProxy = 6D46C2BA2DF735C200558182 /* PBXContainerItemProxy */;
+		};
+		6D46C2C52DF735C200558182 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D46C2A82DF735C100558182 /* Bebas */;
+			targetProxy = 6D46C2C42DF735C200558182 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		4A22B70A2DF6A32600500E79 /* Debug */ = {
+		6D46C2CB2DF735C200558182 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -154,7 +317,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = KNG572S59L;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -172,7 +334,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -183,7 +345,7 @@
 			};
 			name = Debug;
 		};
-		4A22B70B2DF6A32600500E79 /* Release */ = {
+		6D46C2CC2DF735C200558182 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -218,7 +380,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = KNG572S59L;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -230,7 +391,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -240,27 +401,29 @@
 			};
 			name = Release;
 		};
-		4A22B70D2DF6A32600500E79 /* Debug */ = {
+		6D46C2CE2DF735C200558182 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KNG572S59L;
+				DEVELOPMENT_ASSET_PATHS = "\"Bebas/Preview Content\"";
+				DEVELOPMENT_TEAM = 47S23856AC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Bebas/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sixasix.Bebas;
+				PRODUCT_BUNDLE_IDENTIFIER = test.Bebas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -268,27 +431,29 @@
 			};
 			name = Debug;
 		};
-		4A22B70E2DF6A32600500E79 /* Release */ = {
+		6D46C2CF2DF735C200558182 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KNG572S59L;
+				DEVELOPMENT_ASSET_PATHS = "\"Bebas/Preview Content\"";
+				DEVELOPMENT_TEAM = 47S23856AC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Bebas/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sixasix.Bebas;
+				PRODUCT_BUNDLE_IDENTIFIER = test.Bebas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -296,39 +461,118 @@
 			};
 			name = Release;
 		};
+		6D46C2D12DF735C200558182 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47S23856AC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.BebasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bebas.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bebas";
+			};
+			name = Debug;
+		};
+		6D46C2D22DF735C200558182 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47S23856AC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.BebasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bebas.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bebas";
+			};
+			name = Release;
+		};
+		6D46C2D42DF735C200558182 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47S23856AC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.BebasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Bebas;
+			};
+			name = Debug;
+		};
+		6D46C2D52DF735C200558182 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47S23856AC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.BebasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Bebas;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4A22B6FC2DF6A32500500E79 /* Build configuration list for PBXProject "Bebas" */ = {
+		6D46C2A42DF735C100558182 /* Build configuration list for PBXProject "Bebas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4A22B70A2DF6A32600500E79 /* Debug */,
-				4A22B70B2DF6A32600500E79 /* Release */,
+				6D46C2CB2DF735C200558182 /* Debug */,
+				6D46C2CC2DF735C200558182 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4A22B70C2DF6A32600500E79 /* Build configuration list for PBXNativeTarget "Bebas" */ = {
+		6D46C2CD2DF735C200558182 /* Build configuration list for PBXNativeTarget "Bebas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4A22B70D2DF6A32600500E79 /* Debug */,
-				4A22B70E2DF6A32600500E79 /* Release */,
+				6D46C2CE2DF735C200558182 /* Debug */,
+				6D46C2CF2DF735C200558182 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D46C2D02DF735C200558182 /* Build configuration list for PBXNativeTarget "BebasTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D46C2D12DF735C200558182 /* Debug */,
+				6D46C2D22DF735C200558182 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D46C2D32DF735C200558182 /* Build configuration list for PBXNativeTarget "BebasUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D46C2D42DF735C200558182 /* Debug */,
+				6D46C2D52DF735C200558182 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		4A821D782DF7F0E200353E2D /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.59.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
-	rootObject = 4A22B6F92DF6A32500500E79 /* Project object */;
+	rootObject = 6D46C2A12DF735C100558182 /* Project object */;
 }
