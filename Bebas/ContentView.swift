@@ -2,20 +2,22 @@
 //  ContentView.swift
 //  Bebas
 //
-//  Created by Ashraf Alif Adillah on 09/06/25.
+//  Created by Adya Muhammad Prawira on 09/06/25.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("firstTimeOpenBebasApp") var firstTimeOpenBebasApp: Bool = false
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            if !firstTimeOpenBebasApp {
+                DashboardView()
+            } else {
+                OnBoardingView()
+            }
         }
-        .padding()
     }
 }
 
