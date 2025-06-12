@@ -12,6 +12,7 @@ import Vision
 enum AppError: Error {
     case camera
     case vision
+    case tracking
 
     var alertDescription: String {
         switch self {
@@ -19,14 +20,17 @@ enum AppError: Error {
             return "This device does not have a camera"
         case .vision:
             return "Vision framework is not available"
+        case .tracking:
+            return "Hand tracking error"
         }
     }
 }
 
 class CameraViewController: UIViewController {
     private let videoDataOutputQueue = DispatchQueue(
-        label: "CameraFeedDataOutputf", qos: .userInteractive)
+        label: "CameraFeedDataOutput", qos: .userInteractive)
     private var cameraFeedSession: AVCaptureSession?
+    var onHandPointsDetected: (([CGPoint]) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,4 +100,91 @@ class CameraViewController: UIViewController {
 }
 
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
+    nonisolated public func captureOutput(
+        _ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer,
+        from connection: AVCaptureConnection
+    ) {
+        let handJoints: [VNHumanHandPoseObservation.JointName] = [
+            .thumbCMC, .thumbMP, .thumbIP, .thumbTip,
+            .indexMCP, .indexPIP, .indexDIP, .indexTip,
+            .middleMCP, .middlePIP, .middleDIP, .middleTip,
+            .ringMCP, .ringPIP, .ringDIP, .ringTip,
+            .littleMCP, .littlePIP, .littleDIP, .littleTip,
+            .wrist,
+        ]
+
+        let handler = VNImageRequestHandler(
+            cmSampleBuffer: sampleBuffer, orientation: .up, options: [:])
+        let request = VNDetectHumanHandPoseRequest()
+        request.maximumHandCount = 2
+
+        Task {  // allow async context
+            var allHandPoints: [CGPoint] = []
+
+            do {
+                try handler.perform([request])
+                guard let observations = request.results, !observations.isEmpty else {
+                    allHandPoints = Array(repeating: .zero, count: 42)
+                    return
+                }
+
+                let screenSize = await MainActor.run {
+                    UIScreen.main.bounds.size
+                }
+
+                for index in 0..<2 {
+                    guard index < observations.count else {
+                        allHandPoints.append(contentsOf: Array(repeating: .zero, count: 21))
+                        continue
+                    }
+
+                    let hand = observations[index]
+                    let recognizedPoints = try hand.recognizedPoints(.all)
+
+                    for joint in handJoints {
+                        guard let point = recognizedPoints[joint], point.confidence > 0.85 else {
+                            allHandPoints.append(.zero)
+                            continue
+                        }
+
+                        let screenPoint = await MainActor.run {
+                            self.convertHandPoints(point, screenSize: screenSize)
+                        }
+
+                        allHandPoints.append(screenPoint)
+                    }
+                }
+
+                let normalizedPoints = await self.normalizeHandPoints(allHandPoints)
+
+                await MainActor.run {
+                    self.onHandPointsDetected?(normalizedPoints)
+                }
+
+            } catch {
+                await MainActor.run {
+                    self.showErrorAlert(.tracking)
+                }
+            }
+        }
+    }
+
+    @MainActor
+    private func convertHandPoints(_ point: VNRecognizedPoint, screenSize: CGSize) -> CGPoint {
+        return CGPoint(x: (1 - point.y) * screenSize.width, y: point.x * screenSize.height - 50)
+    }
+
+    private func normalizeHandPoints(_ points: [CGPoint]) -> [CGPoint] {
+
+        let validPoints = points.filter { $0 != .zero }
+        guard !validPoints.isEmpty else { return points }
+
+        let minX = validPoints.map { $0.x }.min() ?? 0
+        let minY = validPoints.map { $0.y }.min() ?? 0
+
+        return points.map { point in
+            point == .zero ? .zero : CGPoint(x: point.x - minX, y: point.y - minY)
+        }
+
+    }
 }
