@@ -9,112 +9,94 @@ import SwiftUI
 import AVKit
 import WebKit
 
-struct VideoView: View {
-    let url = URL(string: "https://pmpk.kemdikbud.go.id/sibi/SIBI/katadasar/Kopi.webm")!
-    
-    var body: some View {
-        VideoPlayer(player: AVPlayer(url: url))
-            .aspectRatio(contentMode: .fill)
-            .frame(height: 300) // sesuaikan ukuran
-            .clipped()
-    }
-}
-
-struct WebVideoView: UIViewRepresentable {
-    let videoURL: String
-
-    func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
-    }
-
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        let html = """
-        <html>
-        <body style="margin:0">
-        <video width="100%" height="100%" autoplay loop controls>
-        <source src="\(videoURL)" type="video/webm">
-        Your browser does not support WebM video.
-        </video>
-        </body>
-        </html>
-        """
-        uiView.loadHTMLString(html, baseURL: nil)
-    }
-}
-
 struct DashboardView: View {
     var body: some View {
         NavigationStack {
-            VStack(spacing: 16) {
-                                
+            VStack {
+                HStack {
+                    Text("Selamat datang di")
+                        .font(.title2)
+                    Text("BEBAS")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Spacer()
+                }
                 Text("Apa yang ingin kamu pelajari hari ini?")
                     .frame(maxWidth: .infinity, alignment: .leading)
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 16) {
-                        ForEach(0..<5) { _ in
-                            VStack {
-//                                Image("")
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fill)
-//
-                                WebVideoView(videoURL: "https://pmpk.kemdikbud.go.id/sibi/SIBI/katadasar/Kopi.webm")
-                                    .frame(height: 300)
-                            }
-                            .frame(width: 280, height: 150)
-                            .background(Color(.systemGray5))
-                            .cornerRadius(8)
-                        }
-                    }
+                    .foregroundColor(Color(.systemGray))
+                    .font(.subheadline)
+//                Spacer()
+//                    .frame(height: 8)
+
+                TabView {
+                    DashboardImage(title: "HomeImage1")
+                    DashboardImage(title: "HomeImage1")
+                    DashboardImage(title: "HomeImage1")
+                    DashboardImage(title: "HomeImage1")
                 }
-                
-                NavigationLink(destination: LearnView()) {
-                    CardButton(image: "And_4", title: "Belajar", description: "Ayo belajar guuuyyyyyyyyyyyyssssss!")
-                }
-                
-                NavigationLink(destination: PracticeView()) {
-                    CardButton(image: "And_4", title: "Latihan", description: "Ayo latihan guuuyyyyyyyyyyyyssssss!")
-                }
+                .frame(height: 180)
+                .tabViewStyle(PageTabViewStyle())
+                .indexViewStyle(PageIndexViewStyle())
+                .cornerRadius(10)
                 
                 Spacer()
+                    .frame(height: 24)
+                VStack(spacing: 16) {
+                    HStack {
+                        Text("Aktivitas di Bebas")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        Spacer()
+                    }
+                    HStack(spacing: 16) {
+                        DashboardButton(title: "Belajar", color: .green)
+                        DashboardButton(title: "Praktik", color: .blue)
+                    }
+                    HStack(spacing: 16) {
+                        NavigationLink(destination: DictionaryView()) {
+                            DashboardButton(title: "Kamus", color: .orange)
+                        }
+                        DashboardButton(title: "Eja Kata", color: .red)
+                    }
+                }
+
+                
+                
+
+
+                
             }
-            .padding(.horizontal)
-            .navigationTitle("BEBAAAASSSSSSS")
+            .padding(24)
         }
     }
     
-    func CardButton(image: String, title: String, description: String) -> some View {
-        VStack {
-            VStack {
-                Image(image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            }
-            .frame(maxWidth: .infinity)
-            .frame(height: 150)
-            .background(Color(.systemGray5))
-            .cornerRadius(8)
-            
-            VStack {
-                HStack {
-                    Text(title)
-                        .foregroundColor(.primary)
-                        .bold()
-                    Spacer()
-                }
-                HStack {
-                    Text(description)
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                    Spacer()
-                }
-            }
-            
+    func DashboardImage(title: String) -> some View {
+        HStack {
+            Image(title)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipped()
         }
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background(Color(.systemGray6))
-        .cornerRadius(8)
+    }
+    
+    func DashboardButton(title: String, color: Color) -> some View {
+        VStack {
+            Image(title)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 130)
+            Spacer()
+            Text(title)
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(Color.primary)
+        }
+        .padding(.vertical, 16)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(color, lineWidth: 2)
+        )
     }
 }
 
