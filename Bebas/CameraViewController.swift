@@ -80,7 +80,7 @@ class CameraViewController: UIViewController {
         }
 
         let previewLayer = AVCaptureVideoPreviewLayer(session: session)
-        previewLayer.videoGravity = .resizeAspectFill
+        previewLayer.videoGravity = .resizeAspect
         view.layer.addSublayer(previewLayer)
         previewLayer.frame = view.bounds
 
@@ -100,91 +100,70 @@ class CameraViewController: UIViewController {
 }
 
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
-    nonisolated public func captureOutput(
-        _ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer,
-        from connection: AVCaptureConnection
-    ) {
+    nonisolated public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         let handJoints: [VNHumanHandPoseObservation.JointName] = [
-            .thumbCMC, .thumbMP, .thumbIP, .thumbTip,
+            .wrist, .thumbCMC, .thumbMP, .thumbIP, .thumbTip,
             .indexMCP, .indexPIP, .indexDIP, .indexTip,
             .middleMCP, .middlePIP, .middleDIP, .middleTip,
             .ringMCP, .ringPIP, .ringDIP, .ringTip,
-            .littleMCP, .littlePIP, .littleDIP, .littleTip,
-            .wrist,
+            .littleMCP, .littlePIP, .littleDIP, .littleTip
         ]
+        
+        let handler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer, orientation: .up, options: [:])
+        let handPoseRequest = VNDetectHumanHandPoseRequest()
+        // handPoseRequest.maximumHandCount = 2
 
-        let handler = VNImageRequestHandler(
-            cmSampleBuffer: sampleBuffer, orientation: .up, options: [:])
-        let request = VNDetectHumanHandPoseRequest()
-        request.maximumHandCount = 2
+        do {
+            try handler.perform([handPoseRequest])
+            guard let observations = handPoseRequest.results, !observations.isEmpty else { return }
+            
+            var rightHandPoints: [CGPoint] = []
+            var leftHandPoints: [CGPoint] = []
 
-        Task {  // allow async context
-            var allHandPoints: [CGPoint] = []
+            for observation in observations {
+                var visionHandPoints: [CGPoint] = []
 
-            do {
-                try handler.perform([request])
-                guard let observations = request.results, !observations.isEmpty else {
-                    allHandPoints = Array(repeating: .zero, count: 42)
-                    return
-                }
-
-                let screenSize = await MainActor.run {
-                    UIScreen.main.bounds.size
-                }
-
-                for index in 0..<2 {
-                    guard index < observations.count else {
-                        allHandPoints.append(contentsOf: Array(repeating: .zero, count: 21))
-                        continue
-                    }
-
-                    let hand = observations[index]
-                    let recognizedPoints = try hand.recognizedPoints(.all)
-
-                    for joint in handJoints {
-                        guard let point = recognizedPoints[joint], point.confidence > 0.85 else {
-                            allHandPoints.append(.zero)
-                            continue
-                        }
-
-                        let screenPoint = await MainActor.run {
-                            self.convertHandPoints(point, screenSize: screenSize)
-                        }
-
-                        allHandPoints.append(screenPoint)
+                for joint in handJoints {
+                    if let recognizedPoint = try? observation.recognizedPoint(joint), recognizedPoint.confidence > 0.3 {
+                        visionHandPoints.append(recognizedPoint.location)
                     }
                 }
 
-                let normalizedPoints = await self.normalizeHandPoints(allHandPoints)
-
-                await MainActor.run {
-                    self.onHandPointsDetected?(normalizedPoints)
-                }
-
-            } catch {
-                await MainActor.run {
-                    self.showErrorAlert(.tracking)
+                switch observation.chirality {
+                case .right:
+                    rightHandPoints = visionHandPoints
+                case .left:
+                    leftHandPoints = visionHandPoints
+                default:
+                    break
                 }
             }
+
+            DispatchQueue.main.async {
+                let convertedRightHandPoints = rightHandPoints.map { self.convertHandPoints($0) }
+                let convertedLeftHandPoints = leftHandPoints.map { self.convertHandPoints($0) }
+
+                // Concatenate both hands' points into a single array
+                let allHandPoints = convertedRightHandPoints + convertedLeftHandPoints
+
+                print("Total Hand Points: \(allHandPoints.count)")
+
+                // Trigger handler with combined points
+                self.onHandPointsDetected?(allHandPoints)
+            }
+
+        } catch {
+            DispatchQueue.main.async {
+                self.showErrorAlert(.vision)
+            }
+            print("Hand tracking failed: \(error)")
         }
     }
-
+    
+    // Convert Vision coordinate system to SwiftUI coordinate system
     @MainActor
-    private func convertHandPoints(_ point: VNRecognizedPoint, screenSize: CGSize) -> CGPoint {
-        return CGPoint(x: (1 - point.y) * screenSize.width, y: point.x * screenSize.height - 50)
-    }
-
-    private func normalizeHandPoints(_ points: [CGPoint]) -> [CGPoint] {
-
-        let validPoints = points.filter { $0 != .zero }
-        guard !validPoints.isEmpty else { return points }
-
-        let minX = validPoints.map { $0.x }.min() ?? 0
-        let minY = validPoints.map { $0.y }.min() ?? 0
-
-        return points.map { point in
-            point == .zero ? .zero : CGPoint(x: point.x - minX, y: point.y - minY)
-        }
-
+    private func convertHandPoints(_ point: CGPoint) -> CGPoint {
+        let screenSize = UIScreen.main.bounds.size
+        return CGPoint(x: (1 - point.y) * screenSize.width, y: (point.x) * screenSize.height)
     }
 }

@@ -1,0 +1,169 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild build -project /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas.xcodeproj -scheme Bebas -destination id=066D8FAF-1AE5-4867-AA73-487F4A83BA17 -resultBundlePath /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/.nvim/xcodebuild/build.xcresult -parallelizeTargets
+
+2025-06-11 16:17:01.636 xcodebuild[77388:27534525]  DVTDeviceOperation: Encountered a build number "" that is incompatible with DVTBuildVersion.
+2025-06-11 16:17:01.674 xcodebuild[77388:27534525]  DVTDeviceOperation: Encountered a build number "" that is incompatible with DVTBuildVersion.
+2025-06-11 16:17:01.676 xcodebuild[77388:27534512] [MT] DVTDeviceOperation: Encountered a build number "" that is incompatible with DVTBuildVersion.
+2025-06-11 16:17:01.676 xcodebuild[77388:27534512] [MT] DVTDeviceOperation: Encountered a build number "" that is incompatible with DVTBuildVersion.
+Resolve Package Graph
+
+
+Resolved source packages:
+  SwiftLintPlugins: https://github.com/SimplyDanny/SwiftLintPlugins @ 0.59.1
+
+Writing result bundle at path:
+	/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/.nvim/xcodebuild/build.xcresult
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:066D8FAF-1AE5-4867-AA73-487F4A83BA17, OS:18.4, name:iPhone 16 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:066D8FAF-1AE5-4867-AA73-487F4A83BA17, OS:18.4, name:iPhone 16 Pro }
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'Bebas' in project 'Bebas' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 128e81d6fba48ef5e0fa5bbbc6cdb3fa
+Build description path: /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/XCBuildData/128e81d6fba48ef5e0fa5bbbc6cdb3fa.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk /Users/achrip/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache
+    cd /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -o /Users/achrip/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache
+
+ProcessProductPackaging "" /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas.app-Simulated.xcent (in target 'Bebas' from project 'Bebas')
+    cd /Users/achrip/projects/Academy/MLChallenge/signlearn/ash
+    
+    Entitlements:
+    
+    {
+    "application-identifier" = "KNG572S59L.com.sixasix.Bebas";
+}
+    
+    builtin-productPackagingUtility -entitlements -format xml -o /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas.app-Simulated.xcent
+
+ProcessProductPackagingDER /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas.app-Simulated.xcent /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas.app-Simulated.xcent.der (in target 'Bebas' from project 'Bebas')
+    cd /Users/achrip/projects/Academy/MLChallenge/signlearn/ash
+    /usr/bin/derq query -f xml -i /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas.app-Simulated.xcent -o /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas.app-Simulated.xcent.der --raw
+
+GenerateAssetSymbols /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/Assets.xcassets (in target 'Bebas' from project 'Bebas')
+    cd /Users/achrip/projects/Academy/MLChallenge/signlearn/ash
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/Assets.xcassets --compile /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Products/Debug-iphonesimulator/Bebas.app --output-format human-readable-text --notices --warnings --export-dependency-info /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/assetcatalog_dependencies --output-partial-info-plist /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/assetcatalog_generated_info.plist --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 18.4 --platform iphonesimulator --bundle-identifier com.sixasix.Bebas --generate-swift-asset-symbols /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/* com.apple.actool.compilation-results */
+/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources/GeneratedAssetSymbols.h
+/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources/GeneratedAssetSymbols.swift
+
+
+SwiftDriver Bebas normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Bebas' from project 'Bebas')
+    cd /Users/achrip/projects/Academy/MLChallenge/signlearn/ash
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Bebas -Onone -enforce-exclusivity\=checked @/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/Bebas.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -target arm64-apple-ios18.4-simulator -g -module-cache-path /Users/achrip/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Index.noindex/DataStore -swift-version 5 -I /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Products/Debug-iphonesimulator -F /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64 -c -j14 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/achrip/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache -output-file-map /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/Bebas-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/Bebas.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/achrip/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/Bebas_const_extract_protocols.json -Xcc -iquote -Xcc /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas-generated-files.hmap -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas-own-target-headers.hmap -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas-all-target-headers.hmap -Xcc -iquote -Xcc /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas-project-headers.hmap -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources-normal/arm64 -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources/arm64 -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/Bebas-Swift.h -working-directory /Users/achrip/projects/Academy/MLChallenge/signlearn/ash -experimental-emit-module-separately -disable-cmo
+
+SwiftCompile normal arm64 Compiling\ BebasApp.swift /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/BebasApp.swift (in target 'Bebas' from project 'Bebas')
+
+SwiftCompile normal arm64 /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/BebasApp.swift (in target 'Bebas' from project 'Bebas')
+    cd /Users/achrip/projects/Academy/MLChallenge/signlearn/ash
+    
+
+SwiftCompile normal arm64 Compiling\ ContentView.swift /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/ContentView.swift (in target 'Bebas' from project 'Bebas')
+SwiftCompile normal arm64 /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/ContentView.swift (in target 'Bebas' from project 'Bebas')
+    cd /Users/achrip/projects/Academy/MLChallenge/signlearn/ash
+    
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ Bebas (in target 'Bebas' from project 'Bebas')
+
+EmitSwiftModule normal arm64 (in target 'Bebas' from project 'Bebas')
+    cd /Users/achrip/projects/Academy/MLChallenge/signlearn/ash
+    
+
+SwiftCompile normal arm64 Compiling\ GeneratedAssetSymbols.swift /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'Bebas' from project 'Bebas')
+
+SwiftCompile normal arm64 /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'Bebas' from project 'Bebas')
+    cd /Users/achrip/projects/Academy/MLChallenge/signlearn/ash
+    
+
+SwiftCompile normal arm64 Compiling\ CameraViewController.swift /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift (in target 'Bebas' from project 'Bebas')
+SwiftCompile normal arm64 /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift (in target 'Bebas' from project 'Bebas')
+    cd /Users/achrip/projects/Academy/MLChallenge/signlearn/ash
+    
+/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:126:56: error: cannot find 'observatons' in scope
+            guard let observations = request.results, !observatons.isEmpty else {
+                                                       ^~~~~~~~~~~
+/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:132:23: error: cannot find 'handIndex' in scope
+                guard handIndex < observations.count else {
+                      ^~~~~~~~~
+/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:133:21: error: cannot find 'fullHandPoints' in scope
+                    fullHandPoints.append(contentsOf: Array(repeating: .zero, count: 21))
+                    ^~~~~~~~~~~~~~
+/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:133:73: error: cannot infer contextual base in reference to member 'zero'
+                    fullHandPoints.append(contentsOf: Array(repeating: .zero, count: 21))
+                                                                       ~^~~~
+/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:137:41: error: cannot find 'handIndex' in scope
+                let hand = observations[handIndex]
+                                        ^~~~~~~~~
+/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:138:67: error: cannot infer contextual base in reference to member 'all'
+                let recognizedPoints = try hand.recognizedPoints(.all)
+                                                                 ~^~~
+/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:155:41: error: value of type 'CameraViewController' has no member 'normalizeHandPoints'
+            let normalizedPoints = self.normalizeHandPoints(allHandPoints)
+                                   ~~~~ ^~~~~~~~~~~~~~~~~~~
+/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:157:13: warning: call to main actor-isolated instance method 'showErrorAlert' in a synchronous nonisolated context; this is an error in the Swift 6 language mode
+            showErrorAlert(.tracking)
+            ^
+/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:92:18: note: calls to instance method 'showErrorAlert' from outside of its actor context are implicitly asynchronous
+    private func showErrorAlert(_ error: AppError) {
+                 ^
+/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:92:18: note: main actor isolation inferred from inheritance from class 'UIViewController'
+    private func showErrorAlert(_ error: AppError) {
+                 ^
+
+Failed frontend command:
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-frontend -frontend -c /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraView.swift /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/BebasApp.swift /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/ContentView.swift -primary-file /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources/GeneratedAssetSymbols.swift -emit-dependencies-path /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/CameraViewController.d -emit-const-values-path /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/CameraViewController.swiftconstvalues -emit-reference-dependencies-path /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/CameraViewController.swiftdeps -serialize-diagnostics-path /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/CameraViewController.dia -emit-localized-strings -emit-localized-strings-path /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64 -target arm64-apple-ios18.4-simulator -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -I /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Products/Debug-iphonesimulator -F /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Products/Debug-iphonesimulator -no-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=5 -module-cache-path /Users/achrip/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -swift-version 5 -enforce-exclusivity\=checked -Onone -D DEBUG -serialize-debugging-options -const-gather-protocols-file /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/Bebas_const_extract_protocols.json -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /Users/achrip/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /Users/achrip/projects/Academy/MLChallenge/signlearn/ash -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift -enable-anonymous-context-mangled-names -file-compilation-dir /Users/achrip/projects/Academy/MLChallenge/signlearn/ash -Xcc -ivfsstatcache -Xcc /Users/achrip/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/swift-overrides.hmap -Xcc -iquote -Xcc /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas-generated-files.hmap -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas-own-target-headers.hmap -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas-all-target-headers.hmap -Xcc -iquote -Xcc /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Bebas-project-headers.hmap -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources-normal/arm64 -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources/arm64 -Xcc -I/Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/DerivedSources -Xcc -DDEBUG\=1 -module-name Bebas -frontend-parseable-output -disable-clang-spi -target-sdk-version 18.4 -target-sdk-name iphonesimulator18.4 -external-plugin-path /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/swift/host/plugins\#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -external-plugin-path /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/local/lib/swift/host/plugins\#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -in-process-plugin-server-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/lib/swift/host/plugins -o /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Build/Intermediates.noindex/Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/CameraViewController.o -index-unit-output-path /Bebas.build/Debug-iphonesimulator/Bebas.build/Objects-normal/arm64/CameraViewController.o -index-store-path /Users/achrip/Library/Developer/Xcode/DerivedData/Bebas-akhvzimidczlzmfdyiuxhokyykcf/Index.noindex/DataStore -index-system-modules
+SwiftCompile normal arm64 Compiling\ CameraView.swift /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraView.swift (in target 'Bebas' from project 'Bebas')
+
+SwiftCompile normal arm64 /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraView.swift (in target 'Bebas' from project 'Bebas')
+    cd /Users/achrip/projects/Academy/MLChallenge/signlearn/ash
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling CameraView.swift (in target 'Bebas' from project 'Bebas')
+
+SwiftDriverJobDiscovery normal arm64 Compiling BebasApp.swift (in target 'Bebas' from project 'Bebas')
+
+SwiftDriverJobDiscovery normal arm64 Compiling GeneratedAssetSymbols.swift (in target 'Bebas' from project 'Bebas')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ContentView.swift (in target 'Bebas' from project 'Bebas')
+
+
+Result bundle written to path:
+	/Users/achrip/projects/Academy/MLChallenge/signlearn/ash/.nvim/xcodebuild/build.xcresult
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	SwiftCompile normal arm64 /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift (in target 'Bebas' from project 'Bebas')
+	SwiftCompile normal arm64 Compiling\ CameraViewController.swift /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift (in target 'Bebas' from project 'Bebas')
+	Building project Bebas with scheme Bebas
+(3 failures)
+

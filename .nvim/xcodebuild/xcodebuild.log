@@ -1,0 +1,78 @@
+Resolving Package Graph
+Resolved source packages
+SwiftLintPlugins - https://github.com/SimplyDanny/SwiftLintPlugins @ 0.59.1
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+[Bebas] Generate Asset Symbols Assets.xcassets
+[Bebas] Compiling BebasApp.swift
+[Bebas] Compiling ContentView.swift
+[Bebas] Compiling GeneratedAssetSymbols.swift
+[Bebas] Compiling CameraViewController.swift
+[x] /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:126:56: cannot find 'observatons' in scope
+            guard let observations = request.results, !observatons.isEmpty else {
+                                                       ^~~~~~~~~~~
+[x] /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:132:23: cannot find 'handIndex' in scope
+                guard handIndex < observations.count else {
+                      ^~~~~~~~~
+[x] /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:133:21: cannot find 'fullHandPoints' in scope
+                    fullHandPoints.append(contentsOf: Array(repeating: .zero, count: 21))
+                    ^~~~~~~~~~~~~~
+[x] /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:133:73: cannot infer contextual base in reference to member 'zero'
+                    fullHandPoints.append(contentsOf: Array(repeating: .zero, count: 21))
+                                                                       ~^~~~
+[x] /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:137:41: cannot find 'handIndex' in scope
+                let hand = observations[handIndex]
+                                        ^~~~~~~~~
+[x] /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:138:67: cannot infer contextual base in reference to member 'all'
+                let recognizedPoints = try hand.recognizedPoints(.all)
+                                                                 ~^~~
+[x] /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:155:41: value of type 'CameraViewController' has no member 'normalizeHandPoints'
+            let normalizedPoints = self.normalizeHandPoints(allHandPoints)
+                                   ~~~~ ^~~~~~~~~~~~~~~~~~~
+[!]  /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:157:13: call to main actor-isolated instance method 'showErrorAlert' in a synchronous nonisolated context; this is an error in the Swift 6 language mode
+            showErrorAlert(.tracking)
+            ^
+[Bebas] Compiling CameraView.swift
+
+-----------------------------
+-- xcodebuild.nvim summary --
+-----------------------------
+
+Warnings:
+   /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:157:13
+    call to main actor-isolated instance method 'showErrorAlert' in a synchronous nonisolated context; this is an error in the Swift 6 language mode
+                showErrorAlert(.tracking)
+                ^
+
+Errors:
+  ✖ /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:126:56
+    cannot find 'observatons' in scope
+                guard let observations = request.results, !observatons.isEmpty else {
+                                                           ^~~~~~~~~~~
+  ✖ /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:132:23
+    cannot find 'handIndex' in scope
+                    guard handIndex < observations.count else {
+                          ^~~~~~~~~
+  ✖ /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:133:21
+    cannot find 'fullHandPoints' in scope
+                        fullHandPoints.append(contentsOf: Array(repeating: .zero, count: 21))
+                        ^~~~~~~~~~~~~~
+  ✖ /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:133:73
+    cannot infer contextual base in reference to member 'zero'
+                        fullHandPoints.append(contentsOf: Array(repeating: .zero, count: 21))
+                                                                           ~^~~~
+  ✖ /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:137:41
+    cannot find 'handIndex' in scope
+                    let hand = observations[handIndex]
+                                            ^~~~~~~~~
+  ✖ /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:138:67
+    cannot infer contextual base in reference to member 'all'
+                    let recognizedPoints = try hand.recognizedPoints(.all)
+                                                                     ~^~~
+  ✖ /Users/achrip/projects/Academy/MLChallenge/signlearn/ash/Bebas/CameraViewController.swift:155:41
+    value of type 'CameraViewController' has no member 'normalizeHandPoints'
+                let normalizedPoints = self.normalizeHandPoints(allHandPoints)
+                                       ~~~~ ^~~~~~~~~~~~~~~~~~~
+
+  Build Failed
+
