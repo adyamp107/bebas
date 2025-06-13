@@ -59,7 +59,7 @@ struct DictionaryView: View {
 
                 Spacer()
 
-                Button("Reset Deck") {
+                Button("Ulangi") {
                     withAnimation {
                         cards = DictionaryView.generateCards()
                         currentIndex = 0
@@ -69,13 +69,13 @@ struct DictionaryView: View {
                 .buttonStyle(.borderedProminent)
                 .padding()
 
-                Text("Card \(currentIndex + 1)/\(cards.count)")
+                Text("Kartu \(currentIndex + 1)/\(cards.count)")
                     .foregroundColor(.gray)
 
                 Spacer()
             }
             .padding()
-            .navigationTitle("Dictionary")
+            .navigationTitle("Kamus")
             .navigationBarTitleDisplayMode(.inline)
         }
     }

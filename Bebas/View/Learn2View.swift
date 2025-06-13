@@ -50,5 +50,5 @@ struct Learn2View: View {
 }
 
 #Preview {
-    LearnView()
+    Learn2View()
 }

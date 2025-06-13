@@ -12,6 +12,16 @@ import WebKit
 struct DashboardView: View {
     var body: some View {
         NavigationStack {
+//            VStack {
+//                ZStack {
+//                    CameraView()
+//                        .frame(width: 400, height: 1000)
+//                        .cornerRadius(12)
+//                        .shadow(radius: 5)
+//                        .padding([.bottom], 500)
+//                    
+//                }
+//            }
             VStack {
                 HStack {
                     Text("Selamat datang di")
@@ -25,14 +35,11 @@ struct DashboardView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(Color(.systemGray))
                     .font(.subheadline)
-//                Spacer()
-//                    .frame(height: 8)
-
                 TabView {
-                    DashboardImage(title: "HomeImage1")
-                    DashboardImage(title: "HomeImage1")
-                    DashboardImage(title: "HomeImage1")
-                    DashboardImage(title: "HomeImage1")
+                    DashboardImage(title: "beranda_iklan1")
+                    DashboardImage(title: "beranda_iklan2")
+                    DashboardImage(title: "beranda_iklan3")
+                    DashboardImage(title: "beranda_iklan4")
                 }
                 .frame(height: 180)
                 .tabViewStyle(PageTabViewStyle())
@@ -49,22 +56,18 @@ struct DashboardView: View {
                         Spacer()
                     }
                     HStack(spacing: 16) {
-                        DashboardButton(title: "Belajar", color: .green)
-                        DashboardButton(title: "Praktik", color: .blue)
+                        NavigationLink(destination: Learn1View()) {
+                            DashboardButton(title: "Belajar", image: "beranda_belajar", color: .green)
+                        }
+                        DashboardButton(title: "Praktik", image: "beranda_praktik", color: .blue)
                     }
                     HStack(spacing: 16) {
                         NavigationLink(destination: DictionaryView()) {
-                            DashboardButton(title: "Kamus", color: .orange)
+                            DashboardButton(title: "Kamus", image: "beranda_kamus", color: .orange)
                         }
-                        DashboardButton(title: "Eja Kata", color: .red)
+                        DashboardButton(title: "Eja Kata", image: "beranda_ejakata", color: .red)
                     }
                 }
-
-                
-                
-
-
-                
             }
             .padding(24)
         }
@@ -79,9 +82,9 @@ struct DashboardView: View {
         }
     }
     
-    func DashboardButton(title: String, color: Color) -> some View {
+    func DashboardButton(title: String, image: String, color: Color) -> some View {
         VStack {
-            Image(title)
+            Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 130)
