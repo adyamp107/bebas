@@ -100,70 +100,93 @@ class CameraViewController: UIViewController {
 }
 
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
-    nonisolated public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        let handJoints: [VNHumanHandPoseObservation.JointName] = [
-            .wrist, .thumbCMC, .thumbMP, .thumbIP, .thumbTip,
+    nonisolated public func captureOutput(
+        _ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer,
+        from connection: AVCaptureConnection
+    ) {
+
+        let jointOrder: [VNHumanHandPoseObservation.JointName] = [
+            .thumbCMC, .thumbMP, .thumbIP, .thumbTip,
             .indexMCP, .indexPIP, .indexDIP, .indexTip,
             .middleMCP, .middlePIP, .middleDIP, .middleTip,
             .ringMCP, .ringPIP, .ringDIP, .ringTip,
-            .littleMCP, .littlePIP, .littleDIP, .littleTip
+            .littleMCP, .littlePIP, .littleDIP, .littleTip,
+            .wrist,
         ]
-        
-        let handler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer, orientation: .up, options: [:])
-        let handPoseRequest = VNDetectHumanHandPoseRequest()
-        // handPoseRequest.maximumHandCount = 2
+
+        let handler = VNImageRequestHandler(
+            cmSampleBuffer: sampleBuffer, orientation: .up, options: [:])
+        let request = VNDetectHumanHandPoseRequest()
+        request.maximumHandCount = 2
+
+        var handPoints: [CGPoint] = []
+        handPoints.reserveCapacity(42) // Reserve for 2 hands * 21 joints
 
         do {
-            try handler.perform([handPoseRequest])
-            guard let observations = handPoseRequest.results, !observations.isEmpty else { return }
-            
-            var rightHandPoints: [CGPoint] = []
-            var leftHandPoints: [CGPoint] = []
+            try handler.perform([request])
+            guard let observations = request.results, !observations.isEmpty else {
+                handPoints = Array(repeating: .zero, count: 42)
+                Task { @MainActor in
+                    self.onHandPointsDetected?(handPoints)
+                }
+                return
+            }
 
-            for observation in observations {
-                var visionHandPoints: [CGPoint] = []
+            // File: HandTrackingProcessor.swift
 
-                for joint in handJoints {
-                    if let recognizedPoint = try? observation.recognizedPoint(joint), recognizedPoint.confidence > 0.3 {
-                        visionHandPoints.append(recognizedPoint.location)
+            for handIndex in 0..<2 {
+                guard handIndex < observations.count else {
+                    handPoints.append(contentsOf: Array(repeating: .zero, count: 21))
+                    continue
+                }
+
+                let hand = observations[handIndex]
+                guard let recognizedPoints = try? hand.recognizedPoints(.all) else {
+                    handPoints.append(contentsOf: Array(repeating: .zero, count: 21))
+                    continue
+                }
+
+                for joint in jointOrder {
+                    guard let point = recognizedPoints[joint], point.confidence > 0.5 else {
+                        handPoints.append(.zero)
+                        continue
+                    }
+
+                    Task { @MainActor in
+                        handPoints.append(convertHandPoints(point))
                     }
                 }
-
-                switch observation.chirality {
-                case .right:
-                    rightHandPoints = visionHandPoints
-                case .left:
-                    leftHandPoints = visionHandPoints
-                default:
-                    break
-                }
             }
-
-            DispatchQueue.main.async {
-                let convertedRightHandPoints = rightHandPoints.map { self.convertHandPoints($0) }
-                let convertedLeftHandPoints = leftHandPoints.map { self.convertHandPoints($0) }
-
-                // Concatenate both hands' points into a single array
-                let allHandPoints = convertedRightHandPoints + convertedLeftHandPoints
-
-                print("Total Hand Points: \(allHandPoints.count)")
-
-                // Trigger handler with combined points
-                self.onHandPointsDetected?(allHandPoints)
+            
+            Task { @MainActor in
+                self.onHandPointsDetected?(handPoints)
             }
-
         } catch {
-            DispatchQueue.main.async {
-                self.showErrorAlert(.vision)
+            Task { @MainActor in
+                showErrorAlert(.vision)
             }
-            print("Hand tracking failed: \(error)")
         }
     }
-    
+
     // Convert Vision coordinate system to SwiftUI coordinate system
-    @MainActor
-    private func convertHandPoints(_ point: CGPoint) -> CGPoint {
+    private func convertHandPoints(_ point: VNRecognizedPoint) -> CGPoint {
         let screenSize = UIScreen.main.bounds.size
         return CGPoint(x: (1 - point.y) * screenSize.width, y: (point.x) * screenSize.height)
     }
+
+    /** Method ini harusnya untuk memastikan kalau tangan kiri itu selalu di awal
+    daripada array nya. Pada penulisan comment ini, aku gatau perlu dipakai atau tidak **/
+    private func sortHandsByXPosition(_ observations: [VNHumanHandPoseObservation])
+        -> [VNHumanHandPoseObservation]
+    {
+        guard observations.count == 2,
+            let wrist1 = try? observations[0].recognizedPoint(.wrist),
+            let wrist2 = try? observations[1].recognizedPoint(.wrist)
+        else {
+            return observations
+        }
+        return wrist1.location.x < wrist2.location.x
+            ? observations : [observations[1], observations[0]]
+    }
+
 }
