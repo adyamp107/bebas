@@ -118,68 +118,82 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         _ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer,
         from connection: AVCaptureConnection
     ) {
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+
+        let requestHandler = VNImageRequestHandler(
+            cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
+        let handPoseRequest = VNDetectHumanHandPoseRequest()
 
         let jointOrder: [VNHumanHandPoseObservation.JointName] = [
+            // Thumb
             .thumbCMC, .thumbMP, .thumbIP, .thumbTip,
+            // Index
             .indexMCP, .indexPIP, .indexDIP, .indexTip,
+            // Middle
             .middleMCP, .middlePIP, .middleDIP, .middleTip,
+            // Ring
             .ringMCP, .ringPIP, .ringDIP, .ringTip,
+            // Little
             .littleMCP, .littlePIP, .littleDIP, .littleTip,
+            // Wrist
             .wrist,
         ]
 
-        let handler = VNImageRequestHandler(
-            cmSampleBuffer: sampleBuffer, orientation: .up, options: [:])
-        let request = VNDetectHumanHandPoseRequest()
-        request.maximumHandCount = 2
-
-        var handPoints: [CGPoint] = []
-        handPoints.reserveCapacity(42)  // Reserve for 2 hands * 21 joints
+        // Ambil maksimal 2 tangan (kiri dan kanan)
+        var fullHandPoints: [CGPoint] = []
 
         do {
-            try handler.perform([request])
-            guard let observations = request.results, !observations.isEmpty else {
-                handPoints = Array(repeating: .zero, count: 42)
-                Task { @MainActor in
-                    self.onHandPointsDetected?(handPoints)
+            try requestHandler.perform([handPoseRequest])
+            guard let observations = handPoseRequest.results else {
+                DispatchQueue.main.async {
+                    fullHandPoints = Array(repeating: .zero, count: 42)
                 }
                 return
             }
 
-            // File: HandTrackingProcessor.swift
-
             for handIndex in 0..<2 {
-                guard handIndex < observations.count else {
-                    handPoints.append(contentsOf: Array(repeating: .zero, count: 21))
-                    continue
-                }
+                if handIndex < observations.count {
+                    let hand = observations[handIndex]
+                    let recognizedPoints = try hand.recognizedPoints(.all)
 
-                let hand = observations[handIndex]
-                guard let recognizedPoints = try? hand.recognizedPoints(.all) else {
-                    handPoints.append(contentsOf: Array(repeating: .zero, count: 21))
-                    continue
-                }
-
-                for joint in jointOrder {
-                    let screenPoint: CGPoint
-                    if let point = recognizedPoints[joint], point.confidence > 0.5 {
-                        screenPoint = CGPoint(x: (1 - point.y) * screenWidth, y: (point.x) * screenHeight)
-                    }else {
-                        screenPoint = .zero
+                    for joint in jointOrder {
+                        if let point = recognizedPoints[joint], point.confidence > 0.5 {
+                            let screenPoint: CGPoint
+                            screenPoint = CGPoint(
+                                x: (1 - point.y) * screenWidth,
+                                y: point.x * screenHeight - 50
+                            )
+                            fullHandPoints.append(screenPoint)
+                        } else {
+                            fullHandPoints.append(.zero)
+                        }
                     }
-
-                    handPoints.append(screenPoint)
+                } else {
+                    fullHandPoints.append(contentsOf: Array(repeating: .zero, count: 21))
                 }
             }
 
-            Task { @MainActor in
-                self.onHandPointsDetected?(handPoints)
-                self.predictGesture(from: handPoints)
+            let normalizedPoints = self.normalizeHandPoints(fullHandPoints)
+
+            DispatchQueue.main.async {
+                self.onHandPointsDetected?(fullHandPoints)
+                self.predictGesture(from: normalizedPoints)
             }
+
         } catch {
-            Task { @MainActor in
-                showErrorAlert(.vision)
-            }
+            print("Hand tracking error: \(error)")
+        }
+    }
+
+    nonisolated private func normalizeHandPoints(_ points: [CGPoint]) -> [CGPoint] {
+        let validPoints = points.filter { $0 != .zero }
+        guard !validPoints.isEmpty else { return points }
+
+        let minX = validPoints.map { $0.x }.min() ?? 0
+        let minY = validPoints.map { $0.y }.min() ?? 0
+
+        return points.map { point in
+            point == .zero ? .zero : CGPoint(x: point.x - minX, y: point.y - minY)
         }
     }
 
@@ -205,7 +219,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 extension CameraViewController {
     private func predictGesture(from points: [CGPoint]) {
         let inputArray = flattenPoints(points)
-//        let gestureModel = ModelHand1()
+        //        let gestureModel = ModelHand1()
 
         assert(inputArray.count == 84)
 
