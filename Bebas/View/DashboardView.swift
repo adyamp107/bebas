@@ -10,19 +10,14 @@ import AVKit
 import WebKit
 
 struct DashboardView: View {
+    @State private var currentIndex: Int = 0
+    private var images: [String] = ["beranda_iklan1", "beranda_iklan2", "beranda_iklan3", "beranda_iklan4"]
+    private let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         NavigationStack {
-//            VStack {
-//                ZStack {
-//                    CameraView()
-//                        .frame(width: 400, height: 1000)
-//                        .cornerRadius(12)
-//                        .shadow(radius: 5)
-//                        .padding([.bottom], 500)
-//                    
-//                }
-//            }
             VStack {
+                // Header
                 HStack {
                     Text("Selamat datang di")
                         .font(.title2)
@@ -31,23 +26,31 @@ struct DashboardView: View {
                         .fontWeight(.bold)
                     Spacer()
                 }
+                
                 Text("Apa yang ingin kamu pelajari hari ini?")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(Color(.systemGray))
                     .font(.subheadline)
-                TabView {
-                    DashboardImage(title: "beranda_iklan1")
-                    DashboardImage(title: "beranda_iklan2")
-                    DashboardImage(title: "beranda_iklan3")
-                    DashboardImage(title: "beranda_iklan4")
+                
+                TabView(selection: $currentIndex) {
+                    ForEach(0..<images.count, id: \.self) { index in
+                        DashboardImage(image: images[index])
+                            .tag(index)
+                    }
                 }
                 .frame(height: 180)
                 .tabViewStyle(PageTabViewStyle())
-                .indexViewStyle(PageIndexViewStyle())
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
                 .cornerRadius(10)
+                .onReceive(timer) { _ in
+                    withAnimation {
+                        currentIndex = (currentIndex + 1) % images.count
+                    }
+                }
                 
                 Spacer()
                     .frame(height: 24)
+                
                 VStack(spacing: 16) {
                     HStack {
                         Text("Aktivitas di Bebas")
@@ -55,12 +58,16 @@ struct DashboardView: View {
                             .fontWeight(.bold)
                         Spacer()
                     }
+                    
                     HStack(spacing: 16) {
-                        NavigationLink(destination: Learn1View()) {
+                        NavigationLink(destination: LearnChooseWordView()) {
                             DashboardButton(title: "Belajar", image: "beranda_belajar", color: .green)
                         }
-                        DashboardButton(title: "Praktik", image: "beranda_praktik", color: .blue)
+                        NavigationLink(destination: OnBoardingView(destination: "praktik")) {
+                            DashboardButton(title: "Praktik", image: "beranda_praktik", color: .blue)
+                        }
                     }
+                    
                     HStack(spacing: 16) {
                         NavigationLink(destination: DictionaryView()) {
                             DashboardButton(title: "Kamus", image: "beranda_kamus", color: .orange)
@@ -73,9 +80,9 @@ struct DashboardView: View {
         }
     }
     
-    func DashboardImage(title: String) -> some View {
+    func DashboardImage(image: String) -> some View {
         HStack {
-            Image(title)
+            Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipped()
@@ -104,5 +111,5 @@ struct DashboardView: View {
 }
 
 #Preview {
-    ContentView()
+    DashboardView()
 }

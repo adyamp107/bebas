@@ -1,5 +1,5 @@
 //
-//  LearnView.swift
+//  LearnCameraView.swift
 //  Bebas
 //
 //  Created by Adya Muhammad Prawira on 12/06/25.
@@ -7,23 +7,37 @@
 
 import SwiftUI
 
-struct LearnView: View {
+struct LearnCameraView: View {
+    @Environment(\.dismiss) var dismiss
+
     @State private var handPoints: [CGPoint] = []
+    
     var body: some View {
-        //        GeometryReader { geometry in
-        ZStack {
-            CameraView(handPoints: $handPoints)
-            //                .position(CGPoint(x: geometry.size.width / 2, y: (geometry.size.height / 2)))
-            //                h
-            linesView
-            pointsView
-            
-            VStack {
+        NavigationStack {
+            ZStack {
+                CameraView(handPoints: $handPoints)
+                linesView
+                pointsView
                 
+                VStack {
+                    
+                }
+            }
+            .offset(y: -350)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        HStack {
+                            Image(systemName: "chevron.left")
+                            Text("List")
+                        }
+                    }
+                }
             }
         }
-        .offset(y: -350)
-        //        }
     }
 
     private var linesView: some View {
@@ -40,7 +54,6 @@ struct LearnView: View {
             for handIndex in 0..<handCount {
                 let base = handIndex * 21
 
-                // Connect wrist to each finger's first joint
                 for joints in fingerJoints {
                     guard joints.count > 1 else { continue }
 
@@ -51,7 +64,6 @@ struct LearnView: View {
                         path.addLine(to: firstJoint)
                     }
 
-                    // Connect joints within each finger
                     for i in 0..<(joints.count - 1) {
                         if base + joints[i] < handPoints.count
                             && base + joints[i + 1] < handPoints.count
@@ -69,7 +81,6 @@ struct LearnView: View {
     }
 
     private var pointsView: some View {
-        // for ios 18 + under versions
         ForEach(handPoints.indices, id: \.self) { index in
             let point = handPoints[index]
 
@@ -83,5 +94,5 @@ struct LearnView: View {
 }
 
 #Preview {
-    LearnView()
+    LearnCameraView()
 }
